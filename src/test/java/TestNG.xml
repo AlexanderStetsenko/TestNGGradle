@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="My Suite Name">
+    <test name="Write new post" preserve-order="true">
+        <!--<classes>-->
+            <!--<class name="Tests.LoginTests">-->
+
+
+            <!--</class>-->
+
+        <!--</classes>-->
+
+        <packages>
+            <package name="Tests"/>
+        </packages>
+    </test>
+</suite>
+
+
+
+

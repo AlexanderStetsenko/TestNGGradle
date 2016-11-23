@@ -1,27 +1,37 @@
 package Tests;
 
 import Drivers.DriverSingleton;
+import cucumber.api.CucumberOptions;
+import cucumber.api.testng.AbstractTestNGCucumberTests;
 import org.openqa.selenium.WebDriver;
+import org.testng.annotations.AfterSuite;
 import org.testng.annotations.BeforeSuite;
-import org.testng.annotations.Test;
 
 /**
- * Created by St on 20.11.2016.
+ * Created by St on 22.11.2016.
  */
-public class BaseTest {
 
-    WebDriver driver;
+@CucumberOptions(
+
+        format = { "pretty",
+                "html:target/site/cucumber-pretty",
+                "rerun:target/rerun.txt",
+                "json:target/cucumber1.json" },
+        glue =  "Steps"
+         )
+public class BaseTest extends AbstractTestNGCucumberTests {
+
+    public WebDriver driver;
     @BeforeSuite
     public void setUpSuite() throws Exception {
-        System.out.println("We use " + System.getProperty("driver") + " driver");
+
         driver = DriverSingleton.driverGetInstance().getDriver();
-
-
+        driver.manage().window().maximize();
     }
 
-    @Test
-    public void testName() throws Exception {
-        System.out.println(" test is working.... ");
-        driver.get("https://google.com");
+    @AfterSuite
+    public void tearDownSuite() throws Exception {
+        driver.getClass();
+        driver.quit();
     }
 }
